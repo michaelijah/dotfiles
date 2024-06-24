@@ -18,8 +18,28 @@ Plug 'wikitopian/hardmode'
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'vim-scripts/OmniCppComplete'
+Plug 'mbbill/undotree'
 
 call plug#end()
+
+"Setup for persistent undo in vim
+"Guard for distributions lacking the persistnt_undo feature.
+if has('persistent_undo')
+    "define a path to store persistent_undo files.
+    let target_path = expand('~/.config/vim-persisted-undo/')
+
+    "create the directory and ahny parent directiores
+    "if the location does not exist
+    if !isdirectory(target_path)
+        call system('mkdir -p ' . target_path)
+    endif
+
+    "point Vim to the defined undo directory.
+    let &undodir = target_path
+
+    "finally, enable undo persistence
+    set undofile
+endif
 
 "Remmappings for vim-smooth-scrolling
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 15, 2)<CR>
