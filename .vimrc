@@ -10,7 +10,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 "call plug#begin()
-call plug#begin('/home/knilon/.vim/plugged')
+call plug#begin('~/.vim/plugged')
 
 "This plugin need vifm to be installed on the system. It isn't standalone
 Plug 'vifm/vifm.vim'
