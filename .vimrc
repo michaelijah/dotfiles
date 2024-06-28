@@ -19,6 +19,7 @@ Plug 'tpope/vim-surround'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'vim-scripts/OmniCppComplete'
 Plug 'mbbill/undotree'
+Plug 'vim-airline/vim-airline'
 
 call plug#end()
 
