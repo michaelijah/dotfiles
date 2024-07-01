@@ -76,6 +76,10 @@ set textwidth=120
 set t_Co=256
 syntax on
 colorscheme slate
+" turn off comments automatically carrying on to next line
+" This is different from the usual formatoptions to ensure it stays
+" after other plugins modify the environment
+autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
 
 " turn line numbers on
 set number
