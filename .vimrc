@@ -3,6 +3,10 @@
 " Author: Gerhard Gappmeier
 "
 
+"""Allow folding based on syntax markers
+set foldmethod=marker
+
+
 """Install Vim-Plug if it is not present
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -17,12 +21,13 @@ call plug#begin('~/.vim/plugged')
 
 "This plugin need vifm to be installed on the system. It isn't standalone
 Plug 'vifm/vifm.vim'
-Plug 'wikitopian/hardmode'
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'vim-scripts/OmniCppComplete'
 Plug 'mbbill/undotree'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-scripts/DoxygenToolkit.vim'
+Plug 'wikitopian/hardmode'
 
 call plug#end()
 
@@ -110,7 +115,7 @@ augroup vimrc-incsearch-highlight
     autocmd CmdlineLeave /,\? :set nohlsearch
 augroup END
 
-" Install DoxygenToolkit from http://www.vim.org/scripts/script.php?script_id=987
+"For DoxygenToolkit Plugin
 let g:DoxygenToolkit_authorName="Michael Pitts <michaelijah@duck.com>"
 
 " Enhanced keyboard mappings
@@ -120,9 +125,11 @@ nmap <F2> :w<CR>
 " in insert mode F2 will exit insert, save, enters insert again
 imap <F2> <ESC>:w<CR>i
 " switch between header/TemplateInclude with F4
-map <F3> :e %:p:s,.hxx$,.X123X,:s,.txx$,.hxx,:s,.X123X$,.txx,<CR>
+"map <F3> :e %:p:s,.hxx$,.X123X,:s,.txx$,.hxx,:s,.X123X$,.txx,<CR>
+map <F3> :e %:p:s,.h$,.X123X,:s,.tpp$,.h,:s,.X123X$,.tpp,<CR>
 " switch between header/source with F4
-map <F4> :e %:p:s,.hxx$,.X123X,:s,.cxx$,.hxx,:s,.X123X$,.cxx,<CR>
+"map <F4> :e %:p:s,.hxx$,.X123X,:s,.cxx$,.hxx,:s,.X123X$,.cxx,<CR>
+map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 " recreate tags file with F5
 map <F5> :!ctags -R --sort=yes --c++-kinds=+pl --fields=+iaS --extras=+q .<CR>
 " create doxygen comment

@@ -134,6 +134,10 @@ if [ -f /etc/bash.command-not-found ]; then
     . /etc/bash.command-not-found
 fi
 
+#fasd f(files) a(files/directories) s(show/search/select) d(directories) 
+#helps you go faster
+eval "$(fasd --init auto)"
+
 set-title(){
   ORIG=$PS1
   TITLE="\e]2;$@\a"
